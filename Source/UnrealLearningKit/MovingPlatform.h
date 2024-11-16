@@ -24,15 +24,23 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
-	UPROPERTY(EditAnywhere, Category = "Moving Platform")
+	UPROPERTY(EditAnywhere, Category = "Moving")
 	FVector PlatformVelocity = FVector(100, 0, 0);
 
 	UPROPERTY(EditAnywhere, Category = "Moving Platform")
 	float MoveDistance = 100;
+
+	UPROPERTY(EditAnywhere, Category = "Rotation")
+	FRotator RotationVelocity; 
 
 	FVector StartLocation;
 
 	FString SelfName;
 
 	void MovePlatform(float DeltaTime);
+
+	void RotatePlatform(float DeltaTime);
+
+	// Add const to make it read-only thus pure function
+	bool ShouldPlatformReturn() const;
 };
